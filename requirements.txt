@@ -1,0 +1,4 @@
+
+nfcpy
+cryptography
+playwright
