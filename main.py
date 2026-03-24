@@ -95,6 +95,10 @@ def nfc_loop():
 
             status.set(result)
             speak(result)  # 打刻結果をそのまま読み上げ
+            
+            uid_entry.delete(0, tk.END)
+            id_entry.delete(0, tk.END)
+            pass_entry.delete(0, tk.END)
 
         except NoCardException:
             last_uid = None
@@ -105,8 +109,12 @@ def nfc_loop():
             speak("エラーが発生しました")
             last_uid = None
             time.sleep(1)
+            uid_entry.delete(0, tk.END)
+            id_entry.delete(0, tk.END)
+            pass_entry.delete(0, tk.END)
 
         time.sleep(0.5)
+
 
 
 def save_user():
@@ -116,6 +124,11 @@ def save_user():
     add_user(uid, userid, password)
     status.set("登録完了")
     speak("ユーザーを登録しました")
+    
+    time.sleep(0.5)
+    uid_entry.delete(0, tk.END)
+    id_entry.delete(0, tk.END)
+    pass_entry.delete(0, tk.END)
 
 
 init_db()
