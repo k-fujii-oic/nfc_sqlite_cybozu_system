@@ -4,8 +4,6 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 
 CYBOZU_URL = "http://192.168.10.252/Scripts/cbag/ag.exe?Group=599"
 
-CYBOZU_URL = "http://192.168.10.252/Scripts/cbag/ag.exe?Group=599"
- 
 _punch_queue = queue.Queue()
  
 # ネットワーク系エラー（ブラウザ再起動不要）
@@ -87,7 +85,7 @@ def _punch_worker():
                         result = "退社打刻完了"
                     else:
                         page_text = page.inner_text("body")[:200]
-                        result = f"打刻ボタンなし: {page_text.strip()}"
+                        result = "既に退社済みです"
  
                     try:
                         page.evaluate("document.topLogoutForm.submit()")
